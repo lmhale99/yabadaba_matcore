@@ -32,3 +32,8 @@ class Constituent(Record):
                         description='A chemical element included in the material.')
         self._add_value('str', 'concentration', valuerequired=True,
                         description='The fraction of the material composed of this element.')
+
+    @property
+    def _defaultextensible(self) -> bool:
+        """bool: Default value for extensible for this record class."""
+        return True

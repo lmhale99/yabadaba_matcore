@@ -1,6 +1,6 @@
 from yabadaba.record import Record
 
-class Simulation(Record):
+class SimulationConditions(Record):
     """
     Class for Material Core "simulation-conditions" fields
     """
@@ -56,3 +56,8 @@ class Simulation(Record):
                         description='The amount of thermal energy transferred to the material per unit area per unit time along a given direction.')
         self._add_value('floatarray', 'temperature_gradient', modelpath='temperature-gradient', unit='W/m^2',
                         description='A physical quantity that describes the rate and direction of maximum temperature change per unit distance.')
+
+    @property
+    def _defaultextensible(self) -> bool:
+        """bool: Default value for extensible for this record class."""
+        return True

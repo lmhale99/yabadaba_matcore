@@ -38,3 +38,9 @@ class Provenance(Record):
                         description='Explanation for the change in provenance.')
         self._add_value('str', 'checksum',
                         description='A digital fingerprint for the dataset of associated files.')
+        
+    
+    @property
+    def _defaultextensible(self) -> bool:
+        """bool: Default value for extensible for this record class."""
+        return True

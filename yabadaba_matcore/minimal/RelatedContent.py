@@ -1,9 +1,9 @@
 from yabadaba.record import Record
 
-class Funding(Record):
+class RelatedContent(Record):
 
     """
-    Class for Material Core "funding" fields
+    Class for Material Core "related-content" fields
     """
 
     ########################## Basic metadata fields ##########################
@@ -11,12 +11,12 @@ class Funding(Record):
     @property
     def style(self) -> str:
         """str: The record style"""
-        return 'funding'
+        return 'related_content'
 
     @property
     def modelroot(self) -> str:
         """str: The root element of the content"""
-        return 'funding'
+        return 'related-content'
 
     ####################### Define Values and attributes #######################
 
@@ -28,9 +28,13 @@ class Funding(Record):
         when build_model is called!!!
         """
         
-        self._add_value('str', 'award_title', valuerequired=True, modelpath='award-title',
-                        description='Name of the grant that provided funding to generate the dataset.')
-        self._add_value('str', 'funder', valuerequired=True,
-                        description='The name of the funding agency that provided money and/or resources to generate the dataset.')
-        self._add_value('str', 'award_number', modelpath='award-number',
-                        description='A funder identifier for the grant.')
+        self._add_value('strlist', 'links', valuerequired=True,
+                        description='A list of permanent pointers to related datasets (such as MatCore IDs, DOIs, URIs, etc.)')
+        self._add_value('str', 'description',
+                        description='Explanation of the relationship between the related content and the current dataset.')
+        
+    
+    @property
+    def _defaultextensible(self) -> bool:
+        """bool: Default value for extensible for this record class."""
+        return True

@@ -35,3 +35,8 @@ class File(Record):
                         description='The text and/or data contained in the file. Not required in case a link to the file is provided instead.')
         self._add_value('str', 'link',
                         description='A URI pointing to a permanent location of the file online.')
+        
+    @property
+    def _defaultextensible(self) -> bool:
+        """bool: Default value for extensible for this record class."""
+        return True

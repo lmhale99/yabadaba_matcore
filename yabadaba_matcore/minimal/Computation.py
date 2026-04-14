@@ -1,7 +1,7 @@
 from yabadaba.record import Record
 
 from .Software import Software
-from .Simulation import Simulation
+from .SimulationConditions import SimulationConditions
 
 class Computation(Record):
 
@@ -35,11 +35,18 @@ class Computation(Record):
                         description='The general category to which the computational technique belongs.')
         self._add_value('str', 'method',
                         description='The computational materials science (CMS) approach used in the computation.')
-        self._add_value('recordsubset', 'simulation_conditions', recordclass=Simulation, valuerequired=True, modelpath='simulation-conditions',
+        self._add_value('recordsubset', 'simulation_conditions', 
+                        recordclass=SimulationConditions, valuerequired=True,
+                        modelpath='simulation-conditions',
                         description='The interactions between the system being modeled and the rest of the world maintained during the computation.')
-        self._add_value('record', 'software', recordclass=Software, valuerequired=True,
+        self._add_value('recordlist', 'software', recordclass=Software, valuerequired=True,
                         description='Identification of a computer package used to perform the calculations.')
         
+    @property
+    def _defaultextensible(self) -> bool:
+        """bool: Default value for extensible for this record class."""
+        return True
+    
     def add_software(self, **kwargs):
         """Adds a software to the record"""
         self.get_value('software').append(**kwargs)

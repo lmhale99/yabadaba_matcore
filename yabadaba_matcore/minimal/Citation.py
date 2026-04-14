@@ -1,9 +1,9 @@
 from yabadaba.record import Record
 
-class Creator(Record):
+class Citation(Record):
 
     """
-    Class for Material Core "creator" fields
+    Class for Material Core "citation" fields
     """
 
     ########################## Basic metadata fields ##########################
@@ -11,12 +11,12 @@ class Creator(Record):
     @property
     def style(self) -> str:
         """str: The record style"""
-        return 'creator'
+        return 'citation'
 
     @property
     def modelroot(self) -> str:
         """str: The root element of the content"""
-        return 'creator'
+        return 'citation'
 
     ####################### Define Values and attributes #######################
 
@@ -28,8 +28,16 @@ class Creator(Record):
         when build_model is called!!!
         """
         
-        self._add_value('str', 'name', valuerequired=True,
-                        description='The name of the author who generated the data.')
-        self._add_value('str', 'affiliation', valuerequired=True,
-                        description='The affiliation of the author who generated the data.')
+        self._add_value('str', 'reference', valuerequired=True,
+                        description='Text that uniquely identifies the source of information being cited.')
+        self._add_value('str', 'doi',
+                        description='The digital object identifier (DOI) for the source.')
+        self._add_value('str', 'link',
+                        description='A URI pointing to a permanent location of the source.')
+        
+    
+    @property
+    def _defaultextensible(self) -> bool:
+        """bool: Default value for extensible for this record class."""
+        return True
         
