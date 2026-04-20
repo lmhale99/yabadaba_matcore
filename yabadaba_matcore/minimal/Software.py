@@ -41,11 +41,3 @@ class Software(Record):
     def _defaultextensible(self) -> bool:
         """bool: Default value for extensible for this record class."""
         return True
-    
-    def add_file(self, **kwargs):
-        """Adds a file to the record"""
-        self.get_value('file').append(**kwargs)
-
-    def file_df(self):
-        """Generates a pandas DataFrame of the file information"""
-        return self.get_value('file').metadata_df()

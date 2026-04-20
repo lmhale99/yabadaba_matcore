@@ -32,8 +32,13 @@ class Computation(Record):
         """
         
         self._add_value('str', 'method_class', valuerequired=True, modelpath='method-class',
+                        allowedvalues=('Electronic', 'Atomistic', 'Mesoscopic', 'Continuum',
+                                       'Data-driven'), allowcustomvalue=True,
                         description='The general category to which the computational technique belongs.')
         self._add_value('str', 'method',
+                        allowedvalues=('CC', 'QMC', 'DFT', 'MBPT', 'MC', 'MD',
+                                       'DDD', 'KMC', 'CGMD', 'PF', 'ML'),
+                                       allowcustomvalue=True,
                         description='The computational materials science (CMS) approach used in the computation.')
         self._add_value('recordsubset', 'simulation_conditions', 
                         recordclass=SimulationConditions, valuerequired=True,
@@ -46,11 +51,3 @@ class Computation(Record):
     def _defaultextensible(self) -> bool:
         """bool: Default value for extensible for this record class."""
         return True
-    
-    def add_software(self, **kwargs):
-        """Adds a software to the record"""
-        self.get_value('software').append(**kwargs)
-
-    def software_df(self):
-        """Generates a pandas DataFrame of the software information"""
-        return self.get_value('software').metadata_df()

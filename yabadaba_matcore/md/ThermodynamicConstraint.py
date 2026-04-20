@@ -33,8 +33,16 @@ class ThermodynamicConstraint(Record):
         self._add_value('str', 'system', valuerequired=True,
                         description='The collection of particles to which the constraint is applied.')
         self._add_value('str', 'type',
+                        allowedvalues=('NVE', 'NVT', 'μVT', 'NPT', 'NσT', 'μPT',
+                                       'μσT', 'NPH', 'NσH'),
+                        allowcustomvalue=True,
                         description='The nature of the imposed thermodynamic constraint.')
         self._add_value('str', 'method',
+                        allowedvalues=('Andersen', 'Berendsen', 'CSVR', 'Langevin',
+                                       'Nosé-Hoover', 'Nosé-Hoover chain',
+                                       'Velocity rescaling', 'GCMC', 'CauchyStat',
+                                       'Nosé-Hoover style', 'Parrinello-Rahman'),
+                        allowcustomvalue=True,
                         description=' The name of the approach used to impose the constraint.')
         self._add_value('str', 'description',
                         description='Explanatory text about the constraint and method used to impose it.')
@@ -45,11 +53,3 @@ class ThermodynamicConstraint(Record):
     def _defaultextensible(self) -> bool:
         """bool: Default value for extensible for this record class."""
         return True
-    
-    def add_td_parameter(self, **kwargs):
-        """Adds a td_parameter to the record"""
-        self.get_value('td_parameter').append(**kwargs)
-
-    def td_parameter_df(self):
-        """Generates a pandas DataFrame of the td_parameter information"""
-        return self.get_value('td_parameter').metadata_df()

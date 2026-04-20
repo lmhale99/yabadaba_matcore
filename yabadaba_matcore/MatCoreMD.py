@@ -35,6 +35,9 @@ class MatCoreMD(MatCore):
                         valuerequired=True, modelpath='md-computation',
                         description='The form of molecular dynamics performed.')
         self._add_value('str', 'particle_style', valuerequired=True, modelpath='particle-style',
+                        allowedvalues=('Atom', 'Radical', 'United atom', 'Bead',
+                                       'Coarse grained', 'Mesoscale', 'Classical electron'),
+                        allowcustomvalue=True,
                         description='The nature of the discrete entities used in the molecular dynamics simulation.')
         self._add_value('recordlist', 'particle_interactions', recordclass=ParticleInteractions,
                         valuerequired=True, modelpath='particle-interactions',
@@ -59,46 +62,3 @@ class MatCoreMD(MatCore):
     def _defaultextensible(self) -> bool:
         """bool: Default value for extensible for this record class."""
         return True
-
-    def add_md_computation(self, **kwargs):
-        """Adds a md_computation to the record"""
-        self.get_value('md_computation').append(**kwargs)
-    
-    def add_particle_interactions(self, **kwargs):
-        """Adds a particle_interactions to the record"""
-        self.get_value('particle_interactions').append(**kwargs)
-
-    def add_charge_interactions(self, **kwargs):
-        """Adds a charge_interactions to the record"""
-        self.get_value('charge_interactions').append(**kwargs)
-
-    def add_magnetic_interactions(self, **kwargs):
-        """Adds a magnetic_interactions to the record"""
-        self.get_value('magnetic_interactions').append(**kwargs)
-
-    def add_thermodynamic_constraint(self, **kwargs):
-        """Adds a thermodynamic_constraint to the record"""
-        self.get_value('thermodynamic_constraint').append(**kwargs)
-
-
-
-    def md_computation_df(self):
-        """Generates a pandas DataFrame of the md_computation information"""
-        return self.get_value('md_computation').metadata_df()
-    
-    def particle_interactions_df(self):
-        """Generates a pandas DataFrame of the particle_interactions information"""
-        return self.get_value('particle_interactions').metadata_df()
-    
-    def charge_interactions_df(self):
-        """Generates a pandas DataFrame of the charge_interactions information"""
-        return self.get_value('charge_interactions').metadata_df()
-    
-    def magnetic_interactions_df(self):
-        """Generates a pandas DataFrame of the magnetic_interactions information"""
-        return self.get_value('magnetic_interactions').metadata_df()
-    
-    def thermodynamic_constraint_df(self):
-        """Generates a pandas DataFrame of the thermodynamic_constraint information"""
-        return self.get_value('thermodynamic_constraint').metadata_df()
-    

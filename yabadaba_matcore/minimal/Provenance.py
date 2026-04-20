@@ -29,6 +29,9 @@ class Provenance(Record):
         """
         
         self._add_value('str', 'event_type', valuerequired=True, modelpath='event-type',
+                        allowedvalues=('Initial creation', 'Admin update',
+                                       'Version update', 'Metadata update'),
+                                       allowcustomvalue=True,
                         description='Description of change made to the dataset.')
         self._add_value('date', 'date', valuerequired=True,
                         description='The data when the change was made.')

@@ -32,7 +32,7 @@ class MagneticInteractions(Record):
                         description='The nature of the magnetic spins associated with the particles.',
                         allowedvalues=('Classical spin dynamics', 'Coupled spinlattice dynamics',
                                        'Ab initio spin dynamics', 'Tight binding spin dynamics',
-                                       'Quantum spin dynamics'))
+                                       'Quantum spin dynamics'), allowcustomvalue=True)
         self._add_value('str', 'magnetic_dipole', modelpath='magnetic-dipole',
                         description='Attribute specifying the type of interaction (spin Hamiltonian) between the magnetic dipoles associated with particles.')
         

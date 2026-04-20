@@ -31,8 +31,17 @@ class MDComputation(Record):
         """
         
         self._add_value('str', 'mode', valuerequired=True,
+                        allowedvalues=('Static', 'Minimization', 'Equilibrium dynamics', 
+                                       'Nonequilibrium dynamics', 'Free energy'),
+                        allowcustomvalue=True,
                         description='The type of the molecular dynamics simulation performed.')
         self._add_value('str', 'algorithm',
+                        allowedvalues=('Simplex', 'Damped dynamics', 'FIRE', 'Steepest descent',
+                                       'Conjugate gradients', 'BFGS', 'Simulated annealing',
+                                       'SGLD', 'Leap frog', 'Runge-Kutta', 'Velocity Verlet', 
+                                       'Verlet', 'Harmonic', 'Metadynamics', 'PMF', 
+                                       'Thermodynamic integration', 'Umbrella sampling'),
+                        allowcustomvalue=True,
                         description='The computational method used to perform the computation.')
         self._add_value('recordlist', 'computation_parameter', recordclass=ComputationParameter,
                         modelpath='computation-parameter',
@@ -44,11 +53,3 @@ class MDComputation(Record):
     def _defaultextensible(self) -> bool:
         """bool: Default value for extensible for this record class."""
         return True
-    
-    def add_computation_parameter(self, **kwargs):
-        """Adds a computation_parameter to the record"""
-        self.get_value('computation_parameter').append(**kwargs)
-
-    def computation_parameter_df(self):
-        """Generates a pandas DataFrame of the computation_parameter information"""
-        return self.get_value('computation_parameter').metadata_df()

@@ -31,6 +31,8 @@ class Material(Record):
         """
         
         self._add_value('str', 'phase', valuerequired=True,
+                        allowedvalues=('Amorphous', 'Crystal', 'Quasicrystal', 'Molecule',
+                                       'Liquid', 'Gas', 'Plasma'), allowcustomvalue=True,
                         description='The structure of the material included in the dataset.')
         self._add_value('str', 'description',
                         description='An explanation of the nature of the material, e.g. a crystal structure designation, a chemical formula for a molecule, etc.')
@@ -43,12 +45,4 @@ class Material(Record):
     def _defaultextensible(self) -> bool:
         """bool: Default value for extensible for this record class."""
         return True
-    
-    def add_constituent(self, **kwargs):
-        """Adds a constituent to the record"""
-        self.get_value('constituent').append(**kwargs)
-
-    def constituent_df(self):
-        """Generates a pandas DataFrame of the constituent information"""
-        return self.get_value('constituent').metadata_df()
 
