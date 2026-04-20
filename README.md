@@ -10,11 +10,9 @@ __NOTE__: Currently, this package uses features in the upcoming yabadaba version
 ## Code Development Progress
 
 Done:
-- Record classes added for the minimal MatCore and the MatCore-MD schemas.
+- Record classes added for MatCore, MatCore-MD, and all component schemas except for PF.
 - Basic documentation showing current functionality.
 - User-defined elements with simple values now supported.
 
 To do:
-- Need to add records for the remaining schemas.
-- Need to add allowedvalues lists to the terms with recommended standard values.  The new yabadaba now has an allowcustomvalue setting that supports having this list without explicit value checking.
-- MatCore data entry would be best supported with some sort of GUI as there are lots of required values and related values.  The current non-GUI Python way works best for generating similar records or transforming/updating all records en masse.
+- yabadaba float and floatarray values need updating to allow for alternate representations of complex values.  Currently, values in the model become subsets containing value, unit, error, and shape fields.  Customization requires allowing for custom paths to unit and error, or optionally not displaying unit and shape values when fixed.
