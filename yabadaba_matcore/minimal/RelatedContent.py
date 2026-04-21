@@ -28,10 +28,12 @@ class RelatedContent(Record):
         when build_model is called!!!
         """
         
-        self._add_value('strlist', 'links', valuerequired=True,
-                        description='A list of permanent pointers to related datasets (such as MatCore IDs, DOIs, URIs, etc.)')
+        self._add_value('strlist', 'links',
+                        valuerequired = True,
+                        description = 'A list of permanent pointers to related datasets (such as MatCore IDs, DOIs, URIs, etc.)')
+        
         self._add_value('str', 'description',
-                        description='Explanation of the relationship between the related content and the current dataset.')
+                        description = 'Explanation of the relationship between the related content and the current dataset.')
         
     
     @property

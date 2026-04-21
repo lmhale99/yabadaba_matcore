@@ -28,12 +28,18 @@ class Funding(Record):
         when build_model is called!!!
         """
         
-        self._add_value('str', 'award_title', valuerequired=True, modelpath='award-title',
-                        description='Name of the grant that provided funding to generate the dataset.')
-        self._add_value('str', 'funder', valuerequired=True,
-                        description='The name of the funding agency that provided money and/or resources to generate the dataset.')
-        self._add_value('str', 'award_number', modelpath='award-number',
-                        description='A funder identifier for the grant.')
+        self._add_value('str', 'award_title',
+                        valuerequired = True,
+                        modelpath = 'award-title',
+                        description = 'Name of the grant that provided funding to generate the dataset.')
+        
+        self._add_value('str', 'funder',
+                        valuerequired = True,
+                        description = 'The name of the funding agency that provided money and/or resources to generate the dataset.')
+        
+        self._add_value('str', 'award_number',
+                        modelpath = 'award-number',
+                        description = 'A funder identifier for the grant.')
         
     
     @property

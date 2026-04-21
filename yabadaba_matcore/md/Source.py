@@ -28,14 +28,16 @@ class Source(Record):
         when build_model is called!!!
         """
         
-        self._add_value('str', 'reference', valuerequired=True,
-                        description='The origin of the particle interaction model implementation used, such as an interatomic potential repository (e.g. OpenKIM or the NIST IPR), a code (like LAMMPS), or a publication.')
-        self._add_value('str', 'doi',
-                        description='The digital object identifier (DOI) for the source.')
-        self._add_value('str', 'link',
-                        description='A URI pointing to a permanent location of the source.')
-
+        self._add_value('str', 'reference',
+                        valuerequired = True,
+                        description = 'The origin of the particle interaction model implementation used, such as an interatomic potential repository (e.g. OpenKIM or the NIST IPR), a code (like LAMMPS), or a publication.')
         
+        self._add_value('str', 'doi',
+                        description = 'The digital object identifier (DOI) for the source.')
+        
+        self._add_value('str', 'link',
+                        description = 'A URI pointing to a permanent location of the source.')
+
     @property
     def _defaultextensible(self) -> bool:
         """bool: Default value for extensible for this record class."""

@@ -30,16 +30,30 @@ class ValenceElectronModel(Record):
         when build_model is called!!!
         """
         
-        self._add_value('strlist', 'type', valuerequired=True,
-                        allowedvalues=('Plane waves', 'LAPW', 'Localized orbitals', 'PAW'), allowcustomvalue=True,
-                        description='The choice of a basis set to expand electronic wave functions.')
-        self._add_value('recordlist', 'localized_orbital_basis_set', recordclass=LocalizedOrbitalsBasisSet,
-                        modelpath='localized-orbital-basis-set',
-                        description='For type "Localized orbitals", additional information about the localized orbital basis set.')
-        self._add_value('float', 'kinetic_energy_cutoff', modelpath='kinetic-energy-cutoff', unit='eV',
-                        description=' For type not "Localized orbitals", the maximum kinetic energy of the plane waves included in the calculation of wave functions.')
-        self._add_value('float', 'charge_density_cutoff', modelpath='charge-density-cutoff', unit='eV',
-                        description='For type not "Localized orbitals", the energy value used to truncate the plane wave expansion of the electron charge density,')
+        self._add_value('strlist', 'type',
+                        valuerequired = True,
+                        allowedvalues = (
+                            'Plane waves',
+                            'LAPW',
+                            'Localized orbitals',
+                            'PAW'),
+                        allowcustomvalue = True,
+                        description = 'The choice of a basis set to expand electronic wave functions.')
+        
+        self._add_value('recordlist', 'localized_orbital_basis_set',
+                        recordclass = LocalizedOrbitalsBasisSet,
+                        modelpath = 'localized-orbital-basis-set',
+                        description = 'For type "Localized orbitals", additional information about the localized orbital basis set.')
+        
+        self._add_value('float', 'kinetic_energy_cutoff',
+                        modelpath = 'kinetic-energy-cutoff',
+                        #unit = 'eV',
+                        description = ' For type not "Localized orbitals", the maximum kinetic energy of the plane waves included in the calculation of wave functions.')
+        
+        self._add_value('float', 'charge_density_cutoff',
+                        modelpath = 'charge-density-cutoff',
+                        #unit = 'eV',
+                        description = 'For type not "Localized orbitals", the energy value used to truncate the plane wave expansion of the electron charge density,')
         
     @property
     def _defaultextensible(self) -> bool:

@@ -30,19 +30,33 @@ class DerivedProperty(Record):
         when build_model is called!!!
         """
         
-        self._add_value('str', 'type', valuerequired=True, 
-                        allowedvalues=('Electronic', 'Electron-phonon interactions',
-                                       'Linear-response', 'Magnetic', 'Microscopy, electron',
-                                       'Microscopy, scanning probe', 'NMR', 'Optical',
-                                       'Spectroscopy, core-level', 'Spectroscopy, vibrational',
-                                       'Transport', 'X-ray scattering'),
+        self._add_value('str', 'type',
+                        valuerequired = True, 
+                        allowedvalues = (
+                            'Electronic',
+                            'Electron-phonon interactions',
+                            'Linear-response',
+                            'Magnetic',
+                            'Microscopy, electron',
+                            'Microscopy, scanning probe',
+                            'NMR',
+                            'Optical',
+                            'Spectroscopy, core-level',
+                            'Spectroscopy, vibrational',
+                            'Transport',
+                            'X-ray scattering'),
                         allowcustomvalue = True,
-                        description='Kind of physical quantity being computed.')
-        self._add_value('str', 'description', valuerequired=True,
-                        description='Explanation of the derived property.')
-        self._add_value('recordlist', 'calculation_method', recordclass=CalculationMethod,
-                        modelpath='calculation-method', valuerequired=True,
-                        description='Details regarding an approach used to obtain the derived property. Multiple approaches may be involved in the computation.')
+                        description = 'Kind of physical quantity being computed.')
+        
+        self._add_value('str', 'description',
+                        valuerequired = True,
+                        description = 'Explanation of the derived property.')
+        
+        self._add_value('recordlist', 'calculation_method',
+                        recordclass = CalculationMethod,
+                        modelpath = 'calculation-method',
+                        valuerequired = True,
+                        description = 'Details regarding an approach used to obtain the derived property. Multiple approaches may be involved in the computation.')
         
     @property
     def _defaultextensible(self) -> bool:

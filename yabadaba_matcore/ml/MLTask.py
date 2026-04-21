@@ -28,14 +28,21 @@ class MLTask(Record):
         when build_model is called!!!
         """
         
-        self._add_value('strlist', 'type', valuerequired=True,
-                        allowedvalues=('Property prediction', 'Structure prediction',
-                                       'Structure generation', 'Synthesis prediction',
-                                       'Material ranking', 'Clustering', 'Embedding'),
-                        allowcustomvalue=True,
-                        description='The nature of the machine learning task.')
+        self._add_value('strlist', 'type',
+                        valuerequired = True,
+                        allowedvalues = (
+                            'Property prediction',
+                            'Structure prediction',
+                            'Structure generation',
+                            'Synthesis prediction',
+                            'Material ranking',
+                            'Clustering',
+                            'Embedding'),
+                        allowcustomvalue = True,
+                        description = 'The nature of the machine learning task.')
+        
         self._add_value('str', 'description',
-                        description='Explanation of the machine learning task performed.')
+                        description = 'Explanation of the machine learning task performed.')
         
     @property
     def _defaultextensible(self) -> bool:

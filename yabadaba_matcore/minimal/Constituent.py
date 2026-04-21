@@ -28,10 +28,13 @@ class Constituent(Record):
         when build_model is called!!!
         """
         
-        self._add_value('str', 'species', valuerequired=True,
-                        description='A chemical element included in the material.')
-        self._add_value('str', 'concentration', valuerequired=True,
-                        description='The fraction of the material composed of this element.')
+        self._add_value('str', 'species',
+                        valuerequired = True,
+                        description = 'A chemical element included in the material.')
+        
+        self._add_value('str', 'concentration',
+                        valuerequired = True,
+                        description = 'The fraction of the material composed of this element.')
 
     @property
     def _defaultextensible(self) -> bool:

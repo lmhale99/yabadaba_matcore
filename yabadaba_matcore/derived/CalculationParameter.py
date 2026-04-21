@@ -28,15 +28,20 @@ class CalculationParameter(Record):
         when build_model is called!!!
         """
         
-        self._add_value('str', 'name', valuerequired=True,
-                        description='The designation of the parameter associated with the specified derived property calculation method.')
-        self._add_value('str', 'value', valuerequired=True,
-                        description='The data associated with the calculation parameter.')
-        self._add_value('str', 'unit', valuerequired=True,
-                        description='A standardized string or identifier that defines the dimension or measurement system of the associated value.')
-        self._add_value('str', 'description',
-                        description='An explanation of the meaning, source, or purpose of the calculation parameter.')
+        self._add_value('str', 'name',
+                        valuerequired = True,
+                        description = 'The designation of the parameter associated with the specified derived property calculation method.')
         
+        self._add_value('str', 'value',
+                        valuerequired = True,
+                        description = 'The data associated with the calculation parameter.')
+        
+        self._add_value('str', 'unit',
+                        valuerequired = True,
+                        description = 'A standardized string or identifier that defines the dimension or measurement system of the associated value.')
+        
+        self._add_value('str', 'description',
+                        description = 'An explanation of the meaning, source, or purpose of the calculation parameter.')
         
     @property
     def _defaultextensible(self) -> bool:

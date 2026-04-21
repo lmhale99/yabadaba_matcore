@@ -28,10 +28,13 @@ class Creator(Record):
         when build_model is called!!!
         """
         
-        self._add_value('str', 'name', valuerequired=True,
-                        description='The name of the author who generated the data.')
-        self._add_value('str', 'affiliation', valuerequired=True,
-                        description='The affiliation of the author who generated the data.')
+        self._add_value('str', 'name',
+                        valuerequired = True,
+                        description = 'The name of the author who generated the data.')
+        
+        self._add_value('str', 'affiliation',
+                        valuerequired = True,
+                        description = 'The affiliation of the author who generated the data.')
         
     @property
     def _defaultextensible(self) -> bool:

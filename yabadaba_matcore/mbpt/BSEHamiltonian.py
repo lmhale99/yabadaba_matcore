@@ -28,22 +28,42 @@ class BSEHamiltonian(Record):
         when build_model is called!!!
         """
         
-        self._add_value('int', 'number_valence_bands', modelpath='number-valence-bands',
-                        description='Number of valence bands included in the BSE Hamiltonian.')
-        self._add_value('int', 'number_conduction_bands', modelpath='number-conduction-bands',
-                        description='Number of conduction bands included in the BSE Hamiltonian.')
-        self._add_value('intarray', 'k_point_mesh', modelpath='k-point-mesh', shape=(3,),
-                        description='Brillouin zone grid used for building the BSE Hamiltonian.')
-        self._add_value('floatarray', 'exciton_momentum', modelpath='exciton-momentum', shape=(3,),
-                        description='Crystal momentum of the exciton in the BSE calculation.')
-        self._add_value('str', 'exciton_multiplicity', modelpath='exciton-multiplicity',
-                        allowedvalues=('Singlet', 'Triplet'), allowcustomvalue=True,
-                        description='Specification whether the BSE calculation is performed for singlet or triplet excitons.')
+        self._add_value('int', 'number_valence_bands',
+                        modelpath = 'number-valence-bands',
+                        description = 'Number of valence bands included in the BSE Hamiltonian.')
+        
+        self._add_value('int', 'number_conduction_bands',
+                        modelpath = 'number-conduction-bands',
+                        description = 'Number of conduction bands included in the BSE Hamiltonian.')
+        
+        self._add_value('intarray', 'k_point_mesh',
+                        modelpath = 'k-point-mesh',
+                        shape = (3,),
+                        description = 'Brillouin zone grid used for building the BSE Hamiltonian.')
+        
+        self._add_value('floatarray', 'exciton_momentum',
+                        modelpath = 'exciton-momentum',
+                        shape = (3,),
+                        description = 'Crystal momentum of the exciton in the BSE calculation.')
+        
+        self._add_value('str', 'exciton_multiplicity',
+                        modelpath = 'exciton-multiplicity',
+                        allowedvalues = (
+                            'Singlet',
+                            'Triplet'),
+                        allowcustomvalue = True,
+                        description = 'Specification whether the BSE calculation is performed for singlet or triplet excitons.')
+        
         self._add_value('str', 'diagonalization', 
-                        allowedvalues=('Tamm-Dancoff', 'Full diagonalization'), allowcustomvalue=True,
-                        description='Approximation method used to diagonalize the BSE Hamiltonian.')
-        self._add_value('int', 'number_lowest_eigenvalues', modelpath='number-lowest-eigenvalues',
-                        description='Number of lowest eigenvalues computed by solving the BSE Hamiltonian.')
+                        allowedvalues = (
+                            'Tamm-Dancoff',
+                            'Full diagonalization'),
+                        allowcustomvalue = True,
+                        description = 'Approximation method used to diagonalize the BSE Hamiltonian.')
+        
+        self._add_value('int', 'number_lowest_eigenvalues',
+                        modelpath = 'number-lowest-eigenvalues',
+                        description = 'Number of lowest eigenvalues computed by solving the BSE Hamiltonian.')
         
     @property
     def _defaultextensible(self) -> bool:

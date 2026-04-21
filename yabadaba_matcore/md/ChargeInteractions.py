@@ -28,32 +28,69 @@ class ChargeInteractions(Record):
         when build_model is called!!!
         """
         
-        self._add_value('str', 'charge_origin', valuerequired=True, modelpath='charge-origin',
-                        allowedvalues=('Semi empirical', 'Quantum',
-                                       'Electronic population', 'Electronegativity',
-                                       'Tabulated'),
-                        allowcustomvalue=True,
-                        description='Nature of the particle charges.')
-        self._add_value('str', 'charge_style', valuerequired=True, modelpath='charge-style',
-                        allowedvalues=('Coulomb full', 'Coulomb screened'),
-                        allowcustomvalue=True,
-                        description='The nature of the charges associated with the particles, such as total or effective charges.')
-        self._add_value('str', 'charge_variability', valuerequired=True, modelpath='charge-variability',
-                        allowedvalues=('Fixed', 'QEq', 'EEM', 'iEL/SCF', 'FlucQ', 'Drude'),
-                        allowcustomvalue=True,
-                        description='Attribute specifying the method for dynamically varying the local electric charge associated with discrete entities.')
-        self._add_value('str', 'long_range_electrostatics', modelpath='long-range-electrostatics',
-                        allowedvalues=('None', 'Direct', 'Ewald', 'PME', 'PPPM', 'Reaction'),
-                        allowcustomvalue=True,
-                        description='Method used to compute long-range electrostatic interactions.')
-        self._add_value('str', 'electric_dipole', modelpath='electric-dipole',
-                        allowedvalues=('Stockmayer', 'Screened', 'Long range'),
-                        allowcustomvalue=True,
-                        description='Attribute specifying the type of interaction associated with the local electric dipoles associated with particles.')
-        self._add_value('str', 'electric_dipole_variability', modelpath='electric-dipole-variability',
-                        allowedvalues=('Induced', 'Isotropic', 'Anisotropic'),
-                        allowcustomvalue=True,
-                        description='Attribute specifying the method for dynamically varying the local electric charge associated with discrete entities.')
+        self._add_value('str', 'charge_origin',
+                        valuerequired = True,
+                        modelpath = 'charge-origin',
+                        allowedvalues = (
+                            'Semi empirical',
+                            'Quantum',
+                            'Electronic population',
+                            'Electronegativity',
+                            'Tabulated'),
+                        allowcustomvalue = True,
+                        description = 'Nature of the particle charges.')
+        
+        self._add_value('str', 'charge_style',
+                        valuerequired = True,
+                        modelpath = 'charge-style',
+                        allowedvalues = (
+                            'Coulomb full',
+                            'Coulomb screened'),
+                        allowcustomvalue = True,
+                        description = 'The nature of the charges associated with the particles, such as total or effective charges.')
+        
+        self._add_value('str', 'charge_variability',
+                        valuerequired = True,
+                        modelpath = 'charge-variability',
+                        allowedvalues = (
+                            'Fixed',
+                            'QEq',
+                            'EEM',
+                            'iEL/SCF',
+                            'FlucQ',
+                            'Drude'),
+                        allowcustomvalue = True,
+                        description = 'Attribute specifying the method for dynamically varying the local electric charge associated with discrete entities.')
+        
+        self._add_value('str', 'long_range_electrostatics',
+                        modelpath = 'long-range-electrostatics',
+                        allowedvalues = (
+                            'None',
+                            'Direct',
+                            'Ewald',
+                            'PME',
+                            'PPPM',
+                            'Reaction'),
+                        allowcustomvalue = True,
+                        description = 'Method used to compute long-range electrostatic interactions.')
+        
+        self._add_value('str', 'electric_dipole',
+                        modelpath = 'electric-dipole',
+                        allowedvalues = (
+                            'Stockmayer',
+                            'Screened',
+                            'Long range'),
+                        allowcustomvalue = True,
+                        description = 'Attribute specifying the type of interaction associated with the local electric dipoles associated with particles.')
+        
+        self._add_value('str', 'electric_dipole_variability',
+                        modelpath = 'electric-dipole-variability',
+                        allowedvalues = (
+                            'Induced',
+                            'Isotropic',
+                            'Anisotropic'),
+                        allowcustomvalue = True,
+                        description = 'Attribute specifying the method for dynamically varying the local electric charge associated with discrete entities.')
         
     @property
     def _defaultextensible(self) -> bool:

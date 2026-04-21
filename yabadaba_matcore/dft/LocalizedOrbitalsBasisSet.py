@@ -29,18 +29,23 @@ class LocalizedOrbitalsBasisSet(Record):
         when build_model is called!!!
         """
         
-        self._add_value('str', 'type', valuerequired=True,
-                        description='The designation of the set of orbital functions used for expanding electronic wave functions.')
-        self._add_value('str', 'repository', 
-                        description='The database from which the localized-orbital basis set was obtained.')
-        self._add_value('str', 'version',
-                        description='The version of the localized-orbital basis set.')
-        self._add_value('str', 'doi',
-                        description='The digital object identifier (DOI) for the localized-orbital basis set.')
-        self._add_value('str', 'unique_identifier', modelpath='unique-identifier',
-                        description='A hash or other token providing a digital signature for the localized-orbital basis set.')
-
+        self._add_value('str', 'type',
+                        valuerequired = True,
+                        description = 'The designation of the set of orbital functions used for expanding electronic wave functions.')
         
+        self._add_value('str', 'repository', 
+                        description = 'The database from which the localized-orbital basis set was obtained.')
+        
+        self._add_value('str', 'version',
+                        description = 'The version of the localized-orbital basis set.')
+        
+        self._add_value('str', 'doi',
+                        description = 'The digital object identifier (DOI) for the localized-orbital basis set.')
+        
+        self._add_value('str', 'unique_identifier',
+                        modelpath = 'unique-identifier',
+                        description = 'A hash or other token providing a digital signature for the localized-orbital basis set.')
+
     @property
     def _defaultextensible(self) -> bool:
         """bool: Default value for extensible for this record class."""

@@ -28,12 +28,15 @@ class Citation(Record):
         when build_model is called!!!
         """
         
-        self._add_value('str', 'reference', valuerequired=True,
-                        description='Text that uniquely identifies the source of information being cited.')
+        self._add_value('str', 'reference',
+                        valuerequired = True,
+                        description = 'Text that uniquely identifies the source of information being cited.')
+        
         self._add_value('str', 'doi',
-                        description='The digital object identifier (DOI) for the source.')
+                        description = 'The digital object identifier (DOI) for the source.')
+        
         self._add_value('str', 'link',
-                        description='A URI pointing to a permanent location of the source.')
+                        description = 'A URI pointing to a permanent location of the source.')
         
     
     @property

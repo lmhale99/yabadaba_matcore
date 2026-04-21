@@ -28,12 +28,14 @@ class ModelPerformance(Record):
         when build_model is called!!!
         """
         
-        self._add_value('str', 'validation', valuerequired=True,
-                        description='A description of the approach used to determine the reliability of the obtained machine learning results.')
-        self._add_value('str', 'uncertainty_quantification', modelpath='uncertainty-quantification',
-                        description='The method or process used to identify and measure the range of possible outcomes to assess the reliability of machine learning model predictions.')
+        self._add_value('str', 'validation',
+                        valuerequired = True,
+                        description = 'A description of the approach used to determine the reliability of the obtained machine learning results.')
         
-        
+        self._add_value('str', 'uncertainty_quantification',
+                        modelpath = 'uncertainty-quantification',
+                        description = 'The method or process used to identify and measure the range of possible outcomes to assess the reliability of machine learning model predictions.')
+
     @property
     def _defaultextensible(self) -> bool:
         """bool: Default value for extensible for this record class."""

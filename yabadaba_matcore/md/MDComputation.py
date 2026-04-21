@@ -30,24 +30,46 @@ class MDComputation(Record):
         when build_model is called!!!
         """
         
-        self._add_value('str', 'mode', valuerequired=True,
-                        allowedvalues=('Static', 'Minimization', 'Equilibrium dynamics', 
-                                       'Nonequilibrium dynamics', 'Free energy'),
-                        allowcustomvalue=True,
-                        description='The type of the molecular dynamics simulation performed.')
+        self._add_value('str', 'mode',
+                        valuerequired = True,
+                        allowedvalues = (
+                            'Static',
+                            'Minimization',
+                            'Equilibrium dynamics', 
+                            'Nonequilibrium dynamics',
+                            'Free energy'),
+                        allowcustomvalue = True,
+                        description = 'The type of the molecular dynamics simulation performed.')
+        
         self._add_value('str', 'algorithm',
-                        allowedvalues=('Simplex', 'Damped dynamics', 'FIRE', 'Steepest descent',
-                                       'Conjugate gradients', 'BFGS', 'Simulated annealing',
-                                       'SGLD', 'Leap frog', 'Runge-Kutta', 'Velocity Verlet', 
-                                       'Verlet', 'Harmonic', 'Metadynamics', 'PMF', 
-                                       'Thermodynamic integration', 'Umbrella sampling'),
-                        allowcustomvalue=True,
-                        description='The computational method used to perform the computation.')
-        self._add_value('recordlist', 'computation_parameter', recordclass=ComputationParameter,
-                        modelpath='computation-parameter',
-                        description='The interactions between the system being modeled and the rest of the world maintained during the computation.')
+                        allowedvalues = (
+                            'Simplex',
+                            'Damped dynamics',
+                            'FIRE',
+                            'Steepest descent',
+                            'Conjugate gradients',
+                            'BFGS',
+                            'Simulated annealing',
+                            'SGLD',
+                            'Leap frog',
+                            'Runge-Kutta',
+                            'Velocity Verlet', 
+                            'Verlet',
+                            'Harmonic',
+                            'Metadynamics',
+                            'PMF', 
+                            'Thermodynamic integration',
+                            'Umbrella sampling'),
+                        allowcustomvalue = True,
+                        description = 'The computational method used to perform the computation.')
+        
+        self._add_value('recordlist', 'computation_parameter',
+                        recordclass = ComputationParameter,
+                        modelpath = 'computation-parameter',
+                        description = 'The interactions between the system being modeled and the rest of the world maintained during the computation.')
+        
         self._add_value('str', 'initialization',
-                        description='Information on the conditions set at the start of the simulation.')
+                        description = 'Information on the conditions set at the start of the simulation.')
         
     @property
     def _defaultextensible(self) -> bool:

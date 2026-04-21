@@ -28,19 +28,30 @@ class Provenance(Record):
         when build_model is called!!!
         """
         
-        self._add_value('str', 'event_type', valuerequired=True, modelpath='event-type',
-                        allowedvalues=('Initial creation', 'Admin update',
-                                       'Version update', 'Metadata update'),
-                                       allowcustomvalue=True,
-                        description='Description of change made to the dataset.')
-        self._add_value('date', 'date', valuerequired=True,
-                        description='The data when the change was made.')
-        self._add_value('str', 'agent', valuerequired=True,
-                        description='Identity of the entity responsible for the change.')
+        self._add_value('str', 'event_type',
+                        valuerequired = True,
+                        modelpath = 'event-type',
+                        allowedvalues = (
+                            'Initial creation',
+                            'Admin update',
+                            'Version update',
+                            'Metadata update'),
+                        allowcustomvalue = True,
+                        description = 'Description of change made to the dataset.')
+        
+        self._add_value('date', 'date',
+                        valuerequired = True,
+                        description = 'The data when the change was made.')
+        
+        self._add_value('str', 'agent',
+                        valuerequired = True,
+                        description = 'Identity of the entity responsible for the change.')
+        
         self._add_value('str', 'comments',
-                        description='Explanation for the change in provenance.')
+                        description = 'Explanation for the change in provenance.')
+        
         self._add_value('str', 'checksum',
-                        description='A digital fingerprint for the dataset of associated files.')
+                        description = 'A digital fingerprint for the dataset of associated files.')
         
     
     @property

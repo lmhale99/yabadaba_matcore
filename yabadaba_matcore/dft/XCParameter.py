@@ -29,16 +29,21 @@ class XCParameter(Record):
         when build_model is called!!!
         """
         
-        self._add_value('str', 'name', valuerequired=True,
-                        description='The designation of the exchange-correlation parameter.')
-        self._add_value('str', 'value', valuerequired=True,
-                        description='The data associated with the exchange-correlation parameter.')
-        self._add_value('str', 'unit', valuerequired=True,
-                        description='A standardized string or identifier that defines the dimension or measurement system of the associated value.')
-        self._add_value('str', 'description',
-                        description='An explanation of the meaning, source, or purpose of the parameter.')
-
+        self._add_value('str', 'name',
+                        valuerequired = True,
+                        description = 'The designation of the exchange-correlation parameter.')
         
+        self._add_value('str', 'value',
+                        valuerequired = True,
+                        description = 'The data associated with the exchange-correlation parameter.')
+        
+        self._add_value('str', 'unit',
+                        valuerequired = True,
+                        description = 'A standardized string or identifier that defines the dimension or measurement system of the associated value.')
+        
+        self._add_value('str', 'description',
+                        description = 'An explanation of the meaning, source, or purpose of the parameter.')
+
     @property
     def _defaultextensible(self) -> bool:
         """bool: Default value for extensible for this record class."""

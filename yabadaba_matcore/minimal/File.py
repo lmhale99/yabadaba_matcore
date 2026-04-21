@@ -27,14 +27,18 @@ class File(Record):
         when build_model is called!!!
         """
         
-        self._add_value('str', 'name', valuerequired=True,
-                        description='The file name.')
+        self._add_value('str', 'name',
+                        valuerequired = True,
+                        description = 'The file name.')
+        
         self._add_value('str', 'description',
-                        description='A brief description of the file and its contents.')
+                        description = 'A brief description of the file and its contents.')
+        
         self._add_value('str', 'contents',
-                        description='The text and/or data contained in the file. Not required in case a link to the file is provided instead.')
+                        description = 'The text and/or data contained in the file. Not required in case a link to the file is provided instead.')
+        
         self._add_value('str', 'link',
-                        description='A URI pointing to a permanent location of the file online.')
+                        description = 'A URI pointing to a permanent location of the file online.')
         
     @property
     def _defaultextensible(self) -> bool:

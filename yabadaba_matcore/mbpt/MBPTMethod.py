@@ -28,13 +28,29 @@ class MBPTMethod(Record):
         when build_model is called!!!
         """
         
-        self._add_value('str', 'type', valuerequired=True,
-                        allowedvalues=('GW', 'BSE', 'GW/BSE'), allowcustomvalue=True,
-                        description='The nature of the MBPT calculation performed.')
-        self._add_value('str', 'self_consistency', valuerequired=True, modelpath='self-consistency',
-                        allowedvalues=('G0W0', 'GW0', 'G0W', 'scGW', 'QSGW', 'BSE0', 'scBSE', 'scGW+BSE'),
-                        allowcustomvalue=True,
-                        description='Specifies the level of iterative updating applied to the Green\'s function (G), the screened Coulomb interaction (W), or the excitonic Hamiltonian during the calculation. This property identifies whether the MBPT equations are solved in a \'one-shot\' perturbative manner or through an iterative cycle where the electronic or excitonic quasiparticle states are updated to reach a self-consistent solution.')
+        self._add_value('str', 'type',
+                        valuerequired = True,
+                        allowedvalues = (
+                            'GW',
+                            'BSE',
+                            'GW/BSE'),
+                        allowcustomvalue = True,
+                        description = 'The nature of the MBPT calculation performed.')
+        
+        self._add_value('str', 'self_consistency',
+                        valuerequired = True,
+                        modelpath =' self-consistency',
+                        allowedvalues = (
+                            'G0W0',
+                            'GW0',
+                            'G0W',
+                            'scGW',
+                            'QSGW',
+                            'BSE0',
+                            'scBSE',
+                            'scGW+BSE'),
+                        allowcustomvalue = True,
+                        description = 'Specifies the level of iterative updating applied to the Green\'s function (G), the screened Coulomb interaction (W), or the excitonic Hamiltonian during the calculation. This property identifies whether the MBPT equations are solved in a \'one-shot\' perturbative manner or through an iterative cycle where the electronic or excitonic quasiparticle states are updated to reach a self-consistent solution.')
         
     @property
     def _defaultextensible(self) -> bool:

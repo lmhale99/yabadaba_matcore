@@ -30,11 +30,14 @@ class CalculationMethod(Record):
         when build_model is called!!!
         """
         
-        self._add_value('str', 'description', valuerequired=True,
-                        description='Description of the method used to obtain the derived property.')
-        self._add_value('recordlist', 'calculation_parameter', recordclass=CalculationParameter,
-                        modelpath='calculation-parameter',
-                        description='A parameter associated with the specified calculation method.')
+        self._add_value('str', 'description',
+                        valuerequired = True,
+                        description = 'Description of the method used to obtain the derived property.')
+        
+        self._add_value('recordlist', 'calculation_parameter',
+                        recordclass = CalculationParameter,
+                        modelpath = 'calculation-parameter',
+                        description = 'A parameter associated with the specified calculation method.')
         
     @property
     def _defaultextensible(self) -> bool:

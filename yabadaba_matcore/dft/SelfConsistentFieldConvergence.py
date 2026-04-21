@@ -30,12 +30,18 @@ class SelfConsistentFieldConvergence(Record):
         """
         
         self._add_value('str', 'method',
-                        allowedvalues=('Simple mixing', 'Pulay mixing', 'Blocked Davidson', 'DIIS', 'BFGS'),
-                        allowcustomvalue=True,
-                        description='The self-consistent field mixing and/or extrapolation scheme for the iterative solution of the Kohn-Sham equations.')
-        self._add_value('float', 'tolerance', valuerequired=True,
-                        description='Convergence criterion for the self-consistent loop.')
-
+                        allowedvalues = (
+                            'Simple mixing',
+                            'Pulay mixing',
+                            'Blocked Davidson',
+                            'DIIS',
+                            'BFGS'),
+                        allowcustomvalue = True,
+                        description = 'The self-consistent field mixing and/or extrapolation scheme for the iterative solution of the Kohn-Sham equations.')
+        
+        self._add_value('float', 'tolerance',
+                        valuerequired = True,
+                        description = 'Convergence criterion for the self-consistent loop.')
         
     @property
     def _defaultextensible(self) -> bool:

@@ -28,14 +28,18 @@ class TrainingMethod(Record):
         when build_model is called!!!
         """
         
-        self._add_value('str', 'training-procedure', valuerequired=True, modelpath='training-procedure',
-                        description='The methodology used to determine the machine learning model\'s free parameters.')
-        self._add_value('str', 'training_hyperparameters', modelpath='training-hyperparameters',
-                        description='Documentation of the settings used in fitting the model.')
-        self._add_value('str', 'transfer_learning', modelpath='transfer-learning',
-                        description='Method used to migrate knowledge from previously mastered objectives to accelerate proficiency for the current machine learning task.')
+        self._add_value('str', 'training_procedure',
+                        valuerequired = True,
+                        modelpath = 'training-procedure',
+                        description = 'The methodology used to determine the machine learning model\'s free parameters.')
         
+        self._add_value('str', 'training_hyperparameters',
+                        modelpath = 'training-hyperparameters',
+                        description = 'Documentation of the settings used in fitting the model.')
         
+        self._add_value('str', 'transfer_learning',
+                        modelpath = 'transfer-learning',
+                        description = 'Method used to migrate knowledge from previously mastered objectives to accelerate proficiency for the current machine learning task.')
         
     @property
     def _defaultextensible(self) -> bool:

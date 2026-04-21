@@ -2,10 +2,10 @@ from yabadaba.record import Record
 
 from .XCParameter import XCParameter
 
-class ValenceElectronModel(Record):
+class XCFunctional(Record):
 
     """
-    Class for Material Core DFT "valence-electron-model" fields
+    Class for Material Core DFT "xc-functional" fields
     """
 
     ########################## Basic metadata fields ##########################
@@ -13,12 +13,12 @@ class ValenceElectronModel(Record):
     @property
     def style(self) -> str:
         """str: The record style"""
-        return 'valence_electron_model'
+        return 'xc_functional'
 
     @property
     def modelroot(self) -> str:
         """str: The root element of the content"""
-        return 'valence-electron-model'
+        return 'xc-functional'
 
     ####################### Define Values and attributes #######################
 
@@ -30,13 +30,24 @@ class ValenceElectronModel(Record):
         when build_model is called!!!
         """
         
-        self._add_value('str', 'type', valuerequired=True,
-                        allowedvalues=('LDA', 'GGA', 'Meta GGA', 'Hybrid', 'ML'), allowcustomvalue=True,
-                        description='The mathematical form of the exchange-correlation functional.')
+        self._add_value('str', 'type',
+                        valuerequired = True,
+                        allowedvalues = (
+                            'LDA',
+                            'GGA',
+                            'Meta GGA',
+                            'Hybrid',
+                            'ML'),
+                        allowcustomvalue = True,
+                        description = 'The mathematical form of the exchange-correlation functional.')
+        
         self._add_value('str', 'description',
-                        description='Explanatory text providing more information about the type of the exchange-correlation method used including any relevant identifying information.')
-        self._add_value('recordlist', 'xc_parameter', recordclass=XCParameter, modelpath='xc-parameter',
-                        description='A fixed variable associated with the specified exchange-correlation functional method.')
+                        description = 'Explanatory text providing more information about the type of the exchange-correlation method used including any relevant identifying information.')
+        
+        self._add_value('recordlist', 'xc_parameter',
+                        recordclass = XCParameter,
+                        modelpath = 'xc-parameter',
+                        description = 'A fixed variable associated with the specified exchange-correlation functional method.')
         
     @property
     def _defaultextensible(self) -> bool:

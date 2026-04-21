@@ -31,21 +31,44 @@ class Computation(Record):
         when build_model is called!!!
         """
         
-        self._add_value('str', 'method_class', valuerequired=True, modelpath='method-class',
-                        allowedvalues=('Electronic', 'Atomistic', 'Mesoscopic', 'Continuum',
-                                       'Data-driven'), allowcustomvalue=True,
-                        description='The general category to which the computational technique belongs.')
+        self._add_value('str', 'method_class',
+                        valuerequired = True,
+                        modelpath = 'method-class',
+                        allowedvalues = (
+                            'Electronic',
+                            'Atomistic',
+                            'Mesoscopic',
+                            'Continuum',
+                            'Data-driven'),
+                        allowcustomvalue = True,
+                        description = 'The general category to which the computational technique belongs.')
+        
         self._add_value('str', 'method',
-                        allowedvalues=('CC', 'QMC', 'DFT', 'MBPT', 'MC', 'MD',
-                                       'DDD', 'KMC', 'CGMD', 'PF', 'ML'),
-                                       allowcustomvalue=True,
-                        description='The computational materials science (CMS) approach used in the computation.')
+                        allowedvalues = (
+                            'CC',
+                            'QMC',
+                            'DFT',
+                            'MBPT',
+                            'MC',
+                            'MD',
+                            'DDD',
+                            'KMC',
+                            'CGMD',
+                            'PF',
+                            'ML'),
+                        allowcustomvalue = True,
+                        description = 'The computational materials science (CMS) approach used in the computation.')
+        
         self._add_value('recordsubset', 'simulation_conditions', 
-                        recordclass=SimulationConditions, valuerequired=True,
-                        modelpath='simulation-conditions',
-                        description='The interactions between the system being modeled and the rest of the world maintained during the computation.')
-        self._add_value('recordlist', 'software', recordclass=Software, valuerequired=True,
-                        description='Identification of a computer package used to perform the calculations.')
+                        recordclass = SimulationConditions,
+                        valuerequired = True,
+                        modelpath = 'simulation-conditions',
+                        description = 'The interactions between the system being modeled and the rest of the world maintained during the computation.')
+        
+        self._add_value('recordlist', 'software',
+                        recordclass = Software,
+                        valuerequired = True,
+                        description = 'Identification of a computer package used to perform the calculations.')
         
     @property
     def _defaultextensible(self) -> bool:

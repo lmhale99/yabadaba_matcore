@@ -30,11 +30,18 @@ class CoreElectronModel(Record):
         when build_model is called!!!
         """
         
-        self._add_value('str', 'type', valuerequired=True,
-                        allowedvalues=('All Electron', 'LAPW', 'Pseudopotential', 'PAW'), allowcustomvalue=True,
-                        description='The method used to model the electrons.')
-        self._add_value('recordlist', 'pseudopotential', recordclass=Pseudopotential,
-                        description=' For type "Pseudopotential", or type "PAW", additional information about the pseudopotentials.')
+        self._add_value('str', 'type',
+                        valuerequired = True,
+                        allowedvalues = (
+                            'All Electron',
+                            'LAPW',
+                            'Pseudopotential',
+                            'PAW'),
+                        allowcustomvalue = True,
+                        description = 'The method used to model the electrons.')
+        self._add_value('recordlist', 'pseudopotential',
+                        recordclass = Pseudopotential,
+                        description = ' For type "Pseudopotential", or type "PAW", additional information about the pseudopotentials.')
         
     @property
     def _defaultextensible(self) -> bool:
